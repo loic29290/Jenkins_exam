@@ -1,5 +1,5 @@
 image:
-  repository: loic29290/Jenkins_exam-cast
+  repository: loic29290/jenkins_exam-cast
   tag: V26.0
   imagePullPolicy: IfNotPresent
 

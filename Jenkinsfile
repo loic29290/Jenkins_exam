@@ -4,7 +4,7 @@ pipeline {
 
   environment {
     DOCKER_ROOT_REPOSITORY = "loic29290"
-    DOCKER_REPOSITORY = "loic29290/Jenkins_exam"
+    DOCKER_REPOSITORY = "loic29290/jenkins_exam"
     DOCKER_TAG = "V${BUILD_ID}.0"
     IMAGE_MOVIE = "movie"
     IMAGE_CAST = "cast"

@@ -1,7 +1,7 @@
 # informtion pour le service
 
 image:
-  repository: loic29290/Jenkins_exam-movie
+  repository: loic29290/jenkins_exam-movie
   tag: V26.0
   imagePullPolicy: IfNotPresent
 
