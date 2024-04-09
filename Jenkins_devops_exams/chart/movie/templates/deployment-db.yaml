@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Chart.Name }}-db
+#  name: movie-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}-db
+#      app: movie-db
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}-db
+#        app: movie-db
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}-db
+#      - name: movie-db
+        image: "postgres:12.1-alpine"
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - secretRef:
+            name: {{ .Chart.Name }}-db-secret
+#            name: movie-db-secret
+        - configMapRef:
+            name: {{ .Chart.Name }}-db-configmap
+#            name: movie-db-configmap
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - name: {{ .Chart.Name }}-db-storage
+#        - name: movie-db-storage
+          mountPath: /var/lib/postgresql/data/
+      volumes:
+      - name: {{ .Chart.Name }}-db-storage
+#      - name: movie-db-storage
+        persistentVolumeClaim:
+          claimName: {{ .Chart.Name }}-db-pvc
+#          claimName: movie-db-pvc
