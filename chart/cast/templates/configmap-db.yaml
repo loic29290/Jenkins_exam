@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}-db-configmap
+#  name: cast-db-configmap
+data:
+# castdb
+  POSTGRES_DB: {{ .Values.configmap.dbname }}
+# trust
+  POSTGRES_HOST_AUTH_METHOD: {{ .Values.configmap.hostAuthMethod }}
+#  POSTGRES_DB: "castdb"
+#  POSTGRES_HOST_AUTH_METHOD: "trust"
+

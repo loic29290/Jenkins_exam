@@ -1,0 +1,34 @@
+# informtion pour le service
+
+image:
+  repository: loic29290/Jenkins_exam-movie
+  tag: V26.0
+  imagePullPolicy: IfNotPresent
+
+secret:
+  databaseUri: "postgresql://admin:password@movie-db:5432/moviedb"
+  castServiceUrl: "http://cast-service:8000/api/v1/casts/"
+
+service:
+  type: ClusterIP
+  port: 8000
+
+# information pour la base de données
+configmap:
+  dbname: moviedb
+  hostAuthMethod: trust
+
+persistencedb:
+  existingClaim: ""
+  enabled: true
+  storageClassName: "local-path"
+  accessMode: ReadWriteOnce
+  size: 1Gi
+
+secretdb:
+  username: admin
+  password: password
+
+servicedb:
+  type: ClusterIP
+  port: 5432

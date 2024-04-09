@@ -1,0 +1,31 @@
+image:
+  repository: loic29290/Jenkins_exam-cast
+  tag: V26.0
+  imagePullPolicy: IfNotPresent
+
+secret:
+  databaseUri: "postgresql://admin:password@cast-db:5432/castdb"
+
+service:
+  type: ClusterIP
+  port: 8000
+
+# information pour la base de données
+configmap:
+  dbname: castdb
+  hostAuthMethod: trust
+
+persistencedb:
+  existingClaim: ""
+  enabled: true
+  storageClassName: "local-path"
+  accessMode: ReadWriteOnce
+  size: 1Gi
+
+secretdb:
+  username: admin
+  password: password
+
+servicedb:
+  type: ClusterIP
+  port: 5432

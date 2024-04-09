@@ -1,0 +1,18 @@
+{{- if and .Values.persistencedb.enabled (not .Values.persistencedb.existingClaim) }}
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Chart.Name }}-db-pvc
+#  name: cast-db-pvc
+spec:
+  storageClassName: {{ .Values.persistencedb.storageClassName | default "local-path" }}
+#  storageClassName: "local-path"
+  accessModes:
+    - {{ .Values.persistencedb.accessMode | default "ReadWriteOnce" }}
+#    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: {{ .Values.persistencedb.size | default "1Gi" }}
+#      storage: "1Gi"
+{{ end }}

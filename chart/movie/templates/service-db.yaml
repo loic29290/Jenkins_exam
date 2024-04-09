@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.Name }}-db
+#  name: movie-db
+spec:
+  type: ClusterIP
+  clusterIP: None
+  selector:
+    app: {{ .Chart.Name }}-db
+#    app: movie-db
+  ports:
+  - port: {{ .Values.servicedb.port }}
+#  - port: 5432
